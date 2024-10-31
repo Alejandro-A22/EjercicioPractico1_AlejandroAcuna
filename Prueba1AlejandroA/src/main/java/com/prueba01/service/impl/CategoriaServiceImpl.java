@@ -1,4 +1,4 @@
-package prueba01.service.impl;
+package com.prueba01.service.impl;
 
 import com.prueba01.dao.CategoriaDao;
 import com.prueba01.domain.Categoria;

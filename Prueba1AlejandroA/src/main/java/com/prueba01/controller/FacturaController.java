@@ -9,10 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -28,25 +26,25 @@ public class FacturaController {
         List<Factura> facturas = facturaService.findAll();
         model.addAttribute("facturas", facturas);
         model.addAttribute("totalFacturas", facturas.size());
-        return "/factura/listado"; // Adjust the view path as necessary
+        return "/factura/listado"; // Path to the view for listing invoices
     }
 
     @GetMapping("/nuevo")
     public String facturaNuevo(Model model) {
         model.addAttribute("factura", new Factura());
-        return "/factura/modifica"; // Adjust the view path as necessary
+        return "/factura/modifica"; // Path to the view for creating a new invoice
     }
 
     @PostMapping("/guardar")
     public String facturaGuardar(Factura factura) {
         facturaService.save(factura);
-        return "redirect:/factura/listado";
+        return "redirect:/factura/listado"; // Redirect to the invoice list after saving
     }
 
     @GetMapping("/eliminar/{idFactura}")
     public String facturaEliminar(@PathVariable("idFactura") Long idFactura) {
         facturaService.delete(idFactura);
-        return "redirect:/factura/listado";
+        return "redirect:/factura/listado"; // Redirect to the invoice list after deletion
     }
 
     @GetMapping("/modificar/{idFactura}")
@@ -54,6 +52,6 @@ public class FacturaController {
         Factura factura = facturaService.findById(idFactura)
             .orElseThrow(() -> new RuntimeException("Factura not found"));
         model.addAttribute("factura", factura);
-        return "/factura/modifica"; // Adjust the view path as necessary
+        return "/factura/modifica"; // Path to the view for modifying an invoice
     }
 }
