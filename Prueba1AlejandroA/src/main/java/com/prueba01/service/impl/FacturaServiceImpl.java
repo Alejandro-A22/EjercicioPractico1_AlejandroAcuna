@@ -37,10 +37,10 @@ public class FacturaServiceImpl implements FacturaService {
     @Override
     public Factura update(Long id, Factura factura) {
         if (facturaDao.existsById(id)) {
-            factura.setId(id); // Set the ID of the existing entity
+            factura.setId(id);
             return facturaDao.save(factura);
         }
-        return null; // Or throw an exception if not found
+        return null;
     }
 
     @Override
@@ -48,6 +48,6 @@ public class FacturaServiceImpl implements FacturaService {
         if (facturaDao.existsById(id)) {
             facturaDao.deleteById(id);
         }
-        // Optionally throw an exception if not found
+
     }
 }

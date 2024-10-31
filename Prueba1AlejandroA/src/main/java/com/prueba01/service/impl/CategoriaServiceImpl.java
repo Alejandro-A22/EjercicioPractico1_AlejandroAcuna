@@ -37,10 +37,10 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     public Categoria update(Long id, Categoria categoria) {
         if (categoriaDao.existsById(id)) {
-            categoria.setId(id); // Set the ID of the existing entity
+            categoria.setId(id);
             return categoriaDao.save(categoria);
         }
-        return null; // Or throw an exception if not found
+        return null;
     }
 
     @Override
@@ -48,6 +48,6 @@ public class CategoriaServiceImpl implements CategoriaService {
         if (categoriaDao.existsById(id)) {
             categoriaDao.deleteById(id);
         }
-        // Optionally throw an exception if not found
+
     }
 }

@@ -14,19 +14,19 @@ public class Factura implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") // Maps to the id column in the facturas table
-    private Long id; // Primary key
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "fecha", nullable = false) // Maps to the fecha column
-    @Temporal(TemporalType.DATE) // Specifies that the date should be treated as a date
-    private Date fecha; // Date of the invoice
+    @Column(name = "fecha", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
 
-    @ManyToOne // Defines a many-to-one relationship with Cliente
-    @JoinColumn(name = "id_cliente", foreignKey = @ForeignKey(name = "fk_cliente")) // Maps to the id_cliente column
-    private Cliente cliente; // Reference to the Cliente entity
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", foreignKey = @ForeignKey(name = "fk_cliente"))
+    private Cliente cliente;
 
-    @Column(name = "total", nullable = false) // Maps to the total column
-    private Double total; // Total amount of the invoice
+    @Column(name = "total", nullable = false)
+    private Double total;
 
     public Factura() {
     }

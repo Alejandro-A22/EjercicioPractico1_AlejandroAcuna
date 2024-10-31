@@ -13,24 +13,24 @@ public class Medicamento implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") // Maps to the id column in the medicamentos table
-    private Long id; // Primary key
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "nombre", nullable = false) // Maps to the nombre column
-    private String nombre; // Name of the medication
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
 
-    @Column(name = "descripcion") // Maps to the descripcion column
-    private String descripcion; // Description of the medication
+    @Column(name = "descripcion")
+    private String descripcion;
 
-    @Column(name = "precio", nullable = false) // Maps to the precio column
-    private Double precio; // Price of the medication
+    @Column(name = "precio", nullable = false)
+    private Double precio;
 
-    @Column(name = "stock", columnDefinition = "int default 0") // Maps to the stock column
-    private Integer stock = 0; // Stock of the medication, default is 0
+    @Column(name = "stock", columnDefinition = "int default 0")
+    private Integer stock = 0;
 
-    @ManyToOne // Defines a many-to-one relationship with Categoria
-    @JoinColumn(name = "id_categoria", foreignKey = @ForeignKey(name = "fk_categoria")) // Maps to the id_categoria column
-    private Categoria categoria; // Reference to the Categoria entity
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", foreignKey = @ForeignKey(name = "fk_categoria"))
+    private Categoria categoria;
 
     public Medicamento() {
     }

@@ -51,7 +51,7 @@ public class CategoriaController {
     @GetMapping("/modificar/{idCategoria}")
     public String categoriaModificar(@PathVariable("idCategoria") Long idCategoria, Model model) {
         Categoria categoria = categoriaService.findById(idCategoria)
-            .orElseThrow(() -> new RuntimeException("Categoria not found"));
+                .orElseThrow(() -> new RuntimeException("Categoria not found"));
         model.addAttribute("categoria", categoria);
         return "/categoria/modifica";
     }

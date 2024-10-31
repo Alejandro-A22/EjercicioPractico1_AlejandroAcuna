@@ -27,13 +27,13 @@ public class ClienteController {
         List<Cliente> clientes = clienteService.findAll();
         model.addAttribute("clientes", clientes);
         model.addAttribute("totalClientes", clientes.size());
-        return "/cliente/listado"; // Adjust the view path as necessary
+        return "/cliente/listado";
     }
 
     @GetMapping("/nuevo")
     public String clienteNuevo(Model model) {
         model.addAttribute("cliente", new Cliente());
-        return "/cliente/modifica"; // Adjust the view path as necessary
+        return "/cliente/modifica";
     }
 
     @PostMapping("/guardar")
@@ -51,8 +51,8 @@ public class ClienteController {
     @GetMapping("/modificar/{idCliente}")
     public String clienteModificar(@PathVariable("idCliente") Long idCliente, Model model) {
         Cliente cliente = clienteService.findById(idCliente)
-            .orElseThrow(() -> new RuntimeException("Cliente not found"));
+                .orElseThrow(() -> new RuntimeException("Cliente not found"));
         model.addAttribute("cliente", cliente);
-        return "/cliente/modifica"; // Adjust the view path as necessary
+        return "/cliente/modifica";
     }
 }

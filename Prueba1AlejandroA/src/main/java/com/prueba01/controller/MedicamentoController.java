@@ -26,32 +26,32 @@ public class MedicamentoController {
         List<Medicamento> medicamentos = medicamentoService.findAll();
         model.addAttribute("medicamentos", medicamentos);
         model.addAttribute("totalMedicamentos", medicamentos.size());
-        return "/medicamento/listado"; // Path to the view for listing medications
+        return "/medicamento/listado";
     }
 
     @GetMapping("/nuevo")
     public String medicamentoNuevo(Model model) {
         model.addAttribute("medicamento", new Medicamento());
-        return "/medicamento/modifica"; // Path to the view for creating a new medication
+        return "/medicamento/modifica";
     }
 
     @PostMapping("/guardar")
     public String medicamentoGuardar(Medicamento medicamento) {
         medicamentoService.save(medicamento);
-        return "redirect:/medicamento/listado"; // Redirect to the medication list after saving
+        return "redirect:/medicamento/listado";
     }
 
     @GetMapping("/eliminar/{idMedicamento}")
     public String medicamentoEliminar(@PathVariable("idMedicamento") Long idMedicamento) {
         medicamentoService.delete(idMedicamento);
-        return "redirect:/medicamento/listado"; // Redirect to the medication list after deletion
+        return "redirect:/medicamento/listado";
     }
 
     @GetMapping("/modificar/{idMedicamento}")
     public String medicamentoModificar(@PathVariable("idMedicamento") Long idMedicamento, Model model) {
         Medicamento medicamento = medicamentoService.findById(idMedicamento)
-            .orElseThrow(() -> new RuntimeException("Medicamento not found"));
+                .orElseThrow(() -> new RuntimeException("Medicamento not found"));
         model.addAttribute("medicamento", medicamento);
-        return "/medicamento/modifica"; // Path to the view for modifying a medication
+        return "/medicamento/modifica";
     }
 }

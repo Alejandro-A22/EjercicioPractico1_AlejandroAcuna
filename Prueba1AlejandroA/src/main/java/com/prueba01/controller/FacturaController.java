@@ -26,32 +26,32 @@ public class FacturaController {
         List<Factura> facturas = facturaService.findAll();
         model.addAttribute("facturas", facturas);
         model.addAttribute("totalFacturas", facturas.size());
-        return "/factura/listado"; // Path to the view for listing invoices
+        return "/factura/listado";
     }
 
     @GetMapping("/nuevo")
     public String facturaNuevo(Model model) {
         model.addAttribute("factura", new Factura());
-        return "/factura/modifica"; // Path to the view for creating a new invoice
+        return "/factura/modifica";
     }
 
     @PostMapping("/guardar")
     public String facturaGuardar(Factura factura) {
         facturaService.save(factura);
-        return "redirect:/factura/listado"; // Redirect to the invoice list after saving
+        return "redirect:/factura/listado";
     }
 
     @GetMapping("/eliminar/{idFactura}")
     public String facturaEliminar(@PathVariable("idFactura") Long idFactura) {
         facturaService.delete(idFactura);
-        return "redirect:/factura/listado"; // Redirect to the invoice list after deletion
+        return "redirect:/factura/listado";
     }
 
     @GetMapping("/modificar/{idFactura}")
     public String facturaModificar(@PathVariable("idFactura") Long idFactura, Model model) {
         Factura factura = facturaService.findById(idFactura)
-            .orElseThrow(() -> new RuntimeException("Factura not found"));
+                .orElseThrow(() -> new RuntimeException("Factura not found"));
         model.addAttribute("factura", factura);
-        return "/factura/modifica"; // Path to the view for modifying an invoice
+        return "/factura/modifica";
     }
 }

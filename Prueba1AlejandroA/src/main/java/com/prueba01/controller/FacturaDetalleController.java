@@ -26,32 +26,32 @@ public class FacturaDetalleController {
         List<FacturaDetalle> facturaDetalles = facturaDetalleService.findAll();
         model.addAttribute("facturaDetalles", facturaDetalles);
         model.addAttribute("totalFacturaDetalles", facturaDetalles.size());
-        return "/facturaDetalle/listado"; // Path to the view for listing invoice details
+        return "/facturaDetalle/listado";
     }
 
     @GetMapping("/nuevo")
     public String facturaDetalleNuevo(Model model) {
         model.addAttribute("facturaDetalle", new FacturaDetalle());
-        return "/facturaDetalle/modifica"; // Path to the view for creating a new invoice detail
+        return "/facturaDetalle/modifica";
     }
 
     @PostMapping("/guardar")
     public String facturaDetalleGuardar(FacturaDetalle facturaDetalle) {
         facturaDetalleService.save(facturaDetalle);
-        return "redirect:/facturaDetalle/listado"; // Redirect to the invoice detail list after saving
+        return "redirect:/facturaDetalle/listado";
     }
 
     @GetMapping("/eliminar/{idFacturaDetalle}")
     public String facturaDetalleEliminar(@PathVariable("idFacturaDetalle") Long idFacturaDetalle) {
         facturaDetalleService.delete(idFacturaDetalle);
-        return "redirect:/facturaDetalle/listado"; // Redirect to the invoice detail list after deletion
+        return "redirect:/facturaDetalle/listado";
     }
 
     @GetMapping("/modificar/{idFacturaDetalle}")
     public String facturaDetalleModificar(@PathVariable("idFacturaDetalle") Long idFacturaDetalle, Model model) {
         FacturaDetalle facturaDetalle = facturaDetalleService.findById(idFacturaDetalle)
-            .orElseThrow(() -> new RuntimeException("FacturaDetalle not found"));
+                .orElseThrow(() -> new RuntimeException("FacturaDetalle not found"));
         model.addAttribute("facturaDetalle", facturaDetalle);
-        return "/facturaDetalle/modifica"; // Path to the view for modifying an invoice detail
+        return "/facturaDetalle/modifica";
     }
 }

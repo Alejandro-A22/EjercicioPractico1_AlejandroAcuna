@@ -37,10 +37,10 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public Cliente update(Long id, Cliente cliente) {
         if (clienteDao.existsById(id)) {
-            cliente.setId(id); // Set the ID of the existing entity
+            cliente.setId(id);
             return clienteDao.save(cliente);
         }
-        return null; // Or throw an exception if not found
+        return null;
     }
 
     @Override
@@ -48,6 +48,6 @@ public class ClienteServiceImpl implements ClienteService {
         if (clienteDao.existsById(id)) {
             clienteDao.deleteById(id);
         }
-        // Optionally throw an exception if not found
+
     }
 }

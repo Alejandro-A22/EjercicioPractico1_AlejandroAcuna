@@ -37,10 +37,10 @@ public class MedicamentoServiceImpl implements MedicamentoService {
     @Override
     public Medicamento update(Long id, Medicamento medicamento) {
         if (medicamentoDao.existsById(id)) {
-            medicamento.setId(id); // Set the ID of the existing entity
+            medicamento.setId(id);
             return medicamentoDao.save(medicamento);
         }
-        return null; // Or throw an exception if not found
+        return null;
     }
 
     @Override
@@ -48,6 +48,6 @@ public class MedicamentoServiceImpl implements MedicamentoService {
         if (medicamentoDao.existsById(id)) {
             medicamentoDao.deleteById(id);
         }
-        // Optionally throw an exception if not found
+
     }
 }

@@ -13,23 +13,23 @@ public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") // Maps to the id column in the clientes table
-    private Long id; // Primary key
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "nombre", nullable = false) // Maps to the nombre column
-    private String nombre; // Client's first name
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
 
-    @Column(name = "apellido") // Maps to the apellido column
-    private String apellido; // Client's last name
+    @Column(name = "apellido")
+    private String apellido;
 
-    @Column(name = "telefono") // Maps to the telefono column
-    private String telefono; // Client's phone number
+    @Column(name = "telefono")
+    private String telefono;
 
-    @Column(name = "email") // Maps to the email column
-    private String email; // Client's email address
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "direccion") // Maps to the direccion column
-    private String direccion; // Client's address
+    @Column(name = "direccion")
+    private String direccion;
 
     public Cliente() {
     }
